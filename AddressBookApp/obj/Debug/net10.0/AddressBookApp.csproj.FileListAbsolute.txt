@@ -1,0 +1,15 @@
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\bin\Debug\net10.0\AddressBookApp.exe
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\bin\Debug\net10.0\AddressBookApp.deps.json
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\bin\Debug\net10.0\AddressBookApp.runtimeconfig.json
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\bin\Debug\net10.0\AddressBookApp.dll
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\bin\Debug\net10.0\AddressBookApp.pdb
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.AssemblyInfoInputs.cache
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.AssemblyInfo.cs
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.csproj.CoreCompileInputs.cache
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.dll
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\refint\AddressBookApp.dll
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.pdb
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.genruntimeconfig.cache
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\ref\AddressBookApp.dll
+C:\Users\Krishna Upadhyay\OneDrive\Desktop\AddressBookApp\AddressBookApp\obj\Debug\net10.0\AddressBookApp.sourcelink.json
