@@ -1,8 +1,6 @@
 using AddressBookApp.Models;
-<<<<<<< HEAD
-=======
+
 using AddressBookApp.Validation;
->>>>>>> feature/UC4-edit-contact
 
 namespace AddressBookApp.Services;
 
@@ -27,8 +25,6 @@ public class AddressBook
             Console.WriteLine(contact.ToString());
         }
     }
-<<<<<<< HEAD
-=======
 
     public void UpdateContact()
     {
@@ -141,5 +137,5 @@ public class AddressBook
 
         Console.WriteLine("Fields updated");
     }
->>>>>>> feature/UC4-edit-contact
+
 }
