@@ -14,8 +14,50 @@ public class AddressBook
         contacts = new List<Contact>();
     }
 
+
+    // Testing
     public void AddContact(Contact contact)
     {
+        ContactValidator.Validate(contact);
+
+        if(ContactExists(contact))
+        {
+            throw new InvalidContactException("Contact Already Exists.");
+        }
+        contacts.Add(contact);
+    }
+
+    public void AddContact()
+    {
+
+        Console.WriteLine("Enter first name: ");
+        string? firstName = Console.ReadLine();
+
+        Console.WriteLine("Enter last name: ");
+        string? lastName = Console.ReadLine();
+
+        Console.WriteLine("Enter address: ");
+        string? address = Console.ReadLine();
+
+        Console.WriteLine("Enter City: ");
+        string? city = Console.ReadLine();
+
+        Console.WriteLine("Enter state: ");
+        string? state = Console.ReadLine();
+
+        Console.WriteLine("Enter Zip: ");
+        string? zip = Console.ReadLine();
+
+        Console.WriteLine("Enter Mobile No.: ");
+        string? number = Console.ReadLine();
+
+        Console.WriteLine("Enter Email Id: ");
+        string? email = Console.ReadLine();
+
+        Contact contact = new Contact(firstName, lastName, address, city, state, zip, number, email);
+
+        ContactValidator.Validate(contact);
+
         if(ContactExists(contact))
         {
             throw new InvalidContactException("Contact Already Exists.");
@@ -28,6 +70,7 @@ public class AddressBook
         return contacts.Any(c => c.FirstName == contact.FirstName && c.LastName == contact.LastName);
     }
 
+    // UC 4
     public void PrintAll()
     {
         foreach(Contact contact in contacts)
@@ -44,7 +87,7 @@ public class AddressBook
         Console.WriteLine("Enter last name: ");
         string? lastName = Console.ReadLine();
 
-        Contact? contact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+        Contact? contact = contacts.FirstOrDefault(c => string.Equals(c.FirstName, firstName, StringComparison.OrdinalIgnoreCase) && string.Equals(c.LastName, lastName, StringComparison.OrdinalIgnoreCase));
 
         if(contact == null)
         {
@@ -90,7 +133,6 @@ public class AddressBook
                 contact.Address = address;
             }
 
-            else Console.WriteLine("Invalid Entry");
         }
 
         Console.WriteLine("Enter City: ");
@@ -101,8 +143,6 @@ public class AddressBook
             if(ContactValidator.IsValidAddressPart(city)) contact.City = city;
         }
 
-        else Console.WriteLine("Invalid Entry");
-
         Console.WriteLine("Enter state: ");
         string? state = Console.ReadLine();
 
@@ -111,7 +151,6 @@ public class AddressBook
             if(ContactValidator.IsValidAddressPart(state)) contact.State = state;
         }
 
-        else Console.WriteLine("Invalid Entry");
 
         Console.WriteLine("Enter Zip: ");
         string? zip = Console.ReadLine();
@@ -121,9 +160,6 @@ public class AddressBook
             if(ContactValidator.IsValidZip(zip)) contact.Zip = zip;
         }
 
-        else Console.WriteLine("Invalid Entry");
-
-
         Console.WriteLine("Enter Mobile No.: ");
         string? number = Console.ReadLine();
 
@@ -131,8 +167,6 @@ public class AddressBook
         {
             if(ContactValidator.IsValidNumber(number)) contact.PhoneNumber = number;
         }
-
-        else Console.WriteLine("Invalid Entry");
 
 
         Console.WriteLine("Enter Email Id: ");
@@ -142,8 +176,6 @@ public class AddressBook
         {
             if(ContactValidator.IsValidEmail(email)) contact.Email = email;
         }
-
-        else Console.WriteLine("Invalid Entry");
 
         Console.WriteLine("Fields updated");
     }
