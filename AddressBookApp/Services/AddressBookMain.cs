@@ -21,4 +21,51 @@ public class AddressBookMain
     {
         return books.Sum(b => b.contacts.Count);
     }
+
+    public void SearchByCityOrState()
+    {
+        Console.WriteLine("Enter 1 if you want to seach by city else enter 2 if you want to search by state.");
+        int choice = Convert.ToInt32(Console.ReadLine());
+
+        if(choice == 1)
+        {
+            Console.WriteLine("Enter city name: ");
+            string? city = Console.ReadLine();
+
+            if(city == null)
+            {
+                Console.WriteLine("Invalid entry");
+                return;
+            }
+
+            var result = books.SelectMany(b => b.contacts).Where(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase));
+            foreach(var c in result)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        else if(choice == 2)
+        {
+            Console.WriteLine("Enter state name: ");
+            string? state = Console.ReadLine();
+
+            if(state == null)
+            {
+                Console.WriteLine("Invalid entry");
+                return;
+            }
+
+            var result = books.SelectMany(b => b.contacts).Where(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase));
+            foreach(var c in result)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        else
+        {
+            Console.WriteLine("Invalid Choice.");
+        }
+    }
 }
