@@ -122,4 +122,14 @@ public class AddressBookMain
             Console.WriteLine($"{entry.Key}= {entry.Count()}");
         }
     }
+
+    public void SortEntriesByName()                                          // UC11
+    {
+        var result = books.SelectMany(books => books.contacts).OrderBy(contact => contact.FirstName).ThenBy(contact => contact.LastName);
+
+        foreach(var entry in result)
+        {
+            Console.WriteLine(entry.ToString());
+        }
+    }
 }
