@@ -67,7 +67,7 @@ public class AddressBook
 
     public bool ContactExists(Contact contact)                                            // UC7
     {
-        return contacts.Any(c => c.FirstName == contact.FirstName && c.LastName == contact.LastName);
+        return contacts.Any(c => string.Equals(c.FirstName, contact.FirstName, StringComparison.OrdinalIgnoreCase) && string.Equals(c.LastName, contact.LastName, StringComparison.OrdinalIgnoreCase));
     }
 
     // UC 4
@@ -100,81 +100,50 @@ public class AddressBook
         Console.WriteLine("Enter first name: ");
         firstName = Console.ReadLine();
 
-        if(!string.IsNullOrWhiteSpace(firstName))
-        {
-            if(ContactValidator.IsValidName(firstName))
-            {
-                contact.FirstName = firstName;
-            }
-
-            else Console.WriteLine("Invalid Entry");
-        }
-
         Console.WriteLine("Enter last name: ");
         lastName = Console.ReadLine();
-
-        if(!string.IsNullOrWhiteSpace(lastName))
-        {
-            if(ContactValidator.IsValidName(lastName))
-            {
-                contact.LastName = lastName;
-            }
-
-            else Console.WriteLine("Invalid Entry");
-        }
 
         Console.WriteLine("Enter address: ");
         string? address = Console.ReadLine();
 
-        if(!string.IsNullOrWhiteSpace(address))
-        {
-            if(ContactValidator.IsValidAddressPart(address))
-            {
-                contact.Address = address;
-            }
-
-        }
-
         Console.WriteLine("Enter City: ");
         string? city = Console.ReadLine();
-
-        if(!string.IsNullOrWhiteSpace(city))
-        {
-            if(ContactValidator.IsValidAddressPart(city)) contact.City = city;
-        }
 
         Console.WriteLine("Enter state: ");
         string? state = Console.ReadLine();
 
-        if(!string.IsNullOrWhiteSpace(state))
-        {
-            if(ContactValidator.IsValidAddressPart(state)) contact.State = state;
-        }
-
-
         Console.WriteLine("Enter Zip: ");
         string? zip = Console.ReadLine();
-
-        if(!string.IsNullOrWhiteSpace(zip))
-        {
-            if(ContactValidator.IsValidZip(zip)) contact.Zip = zip;
-        }
 
         Console.WriteLine("Enter Mobile No.: ");
         string? number = Console.ReadLine();
 
-        if(!string.IsNullOrWhiteSpace(number))
-        {
-            if(ContactValidator.IsValidNumber(number)) contact.PhoneNumber = number;
-        }
-
-
         Console.WriteLine("Enter Email Id: ");
         string? email = Console.ReadLine();
 
-        if(!string.IsNullOrWhiteSpace(email))
+        string newFirstName = (!String.IsNullOrWhiteSpace(firstName)) ? firstName : contact.FirstName;
+        string newLastName = (!String.IsNullOrWhiteSpace(lastName)) ? lastName : contact.LastName;
+        string newAddress = (!String.IsNullOrWhiteSpace(address)) ? address : contact.Address;
+        string newCity = (!String.IsNullOrWhiteSpace(city)) ? city : contact.City;
+        string newState = (!String.IsNullOrWhiteSpace(state)) ? state : contact.State;
+        string newZip = (!String.IsNullOrWhiteSpace(zip)) ? zip : contact.Zip;
+        string newNumber = (!String.IsNullOrWhiteSpace(number)) ? number : contact.PhoneNumber;
+        string newEmail = (!String.IsNullOrWhiteSpace(email)) ? email : contact.Email;
+
+        Contact newContact = new(newFirstName, newLastName, newAddress, newCity, newState, newZip, newNumber, newEmail);
+
+        ContactValidator.Validate(newContact);
+
+        if(!ContactExists(newContact))
         {
-            if(ContactValidator.IsValidEmail(email)) contact.Email = email;
+            contact.FirstName = newContact.FirstName;
+            contact.LastName = newContact.LastName;
+            contact.Address = newContact.Address;
+            contact.City = newContact.City;
+            contact.State = newContact.State;
+            contact.Zip = newContact.Zip;
+            contact.PhoneNumber = newContact.PhoneNumber;
+            contact.Email = newContact.Email;
         }
 
         Console.WriteLine("Fields updated");
@@ -190,7 +159,7 @@ public class AddressBook
 
         Console.WriteLine();
 
-        Contact? contact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+        Contact? contact = contacts.FirstOrDefault(c => string.Equals(c.FirstName, firstName, StringComparison.OrdinalIgnoreCase) && string.Equals(c.LastName, lastName, StringComparison.OrdinalIgnoreCase));
 
         if(contact == null)
         {

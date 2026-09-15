@@ -33,83 +33,91 @@ public class Program
             Console.WriteLine("Enter your choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
-            switch (choice)
+            try
             {
-                case 1:
-                    addressBook.AddContact();
-                    break;
+                 switch (choice)
+                {
+                    case 1:
+                        addressBook.AddContact();
+                        break;
 
-                case 2:
-                    addressBook.UpdateContact();
-                    break;
+                    case 2:
+                        addressBook.UpdateContact();
+                        break;
 
-                case 3:
-                    addressBook.RemoveByName();
-                    break;
+                    case 3:
+                        addressBook.RemoveByName();
+                        break;
 
-                case 4:
-                    addressBook.PrintAll();
-                    break;
+                    case 4:
+                        addressBook.PrintAll();
+                        break;
 
-                case 5:
-                    int count = addressBookMain.CountContacts();
-                    Console.WriteLine(count);
-                    break;
+                    case 5:
+                        int count = addressBookMain.CountContacts();
+                        Console.WriteLine(count);
+                        break;
 
-                case 6:
-                    addressBookMain.SearchByCityOrState();
-                    break;
+                    case 6:
+                        addressBookMain.SearchByCityOrState();
+                        break;
 
-                case 7:
-                    addressBookMain.DisplayContactsGroupedByCity();
-                    break;
+                    case 7:
+                        addressBookMain.DisplayContactsGroupedByCity();
+                        break;
 
-                case 8:
-                    addressBookMain.DisplayContactsGroupedByState();
-                    break;
+                    case 8:
+                        addressBookMain.DisplayContactsGroupedByState();
+                        break;
 
-                case 9:
-                    addressBookMain.CountByCityOrState();
-                    break;
+                    case 9:
+                        addressBookMain.CountByCityOrState();
+                        break;
 
-                case 10:
-                    addressBookMain.SortEntriesByName();
-                    break;
+                    case 10:
+                        addressBookMain.SortEntriesByName();
+                        break;
 
-                case 11:
-                    Console.WriteLine("Enter field you want to sort by City(c), State(s), Zip(z)");
-                    char ch = Console.ReadLine()[0];
+                    case 11:
+                        Console.WriteLine("Enter field you want to sort by City(c), State(s), Zip(z)");
+                        char ch = Console.ReadLine()[0];
 
-                    if(ch == 'c')
-                    {
-                        addressBookMain.SortEntriesByCity();
-                    }
+                        if(ch == 'c')
+                        {
+                            addressBookMain.SortEntriesByCity();
+                        }
 
-                    else if(ch == 's')
-                    {
-                        addressBookMain.SortEntriesByState();
-                    }
+                        else if(ch == 's')
+                        {
+                            addressBookMain.SortEntriesByState();
+                        }
 
-                    else if(ch == 'z')
-                    {
-                        addressBookMain.SortEntriesByZip();
-                    }
+                        else if(ch == 'z')
+                        {
+                            addressBookMain.SortEntriesByZip();
+                        }
 
-                    else
-                    {
-                        Console.WriteLine("Invalid input");
-                    }
+                        else
+                        {
+                            Console.WriteLine("Invalid input");
+                        }
 
-                    break;
+                        break;
 
-                case 0:
-                    Console.WriteLine("Exiting...");
-                    Environment.Exit(0);
-                    break;
+                    case 0:
+                        Console.WriteLine("Exiting...");
+                        Environment.Exit(0);
+                        break;
 
-                default:
-                    Console.WriteLine("Invalid Choice! Try again");
-                    break;
+                    default:
+                        Console.WriteLine("Invalid Choice! Try again");
+                        break;
+                }
+            }
+
+           catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
