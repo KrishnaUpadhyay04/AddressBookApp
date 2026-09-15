@@ -1,3 +1,4 @@
+using AddressBookApp.Exceptions;
 using AddressBookApp.Models;
 
 using AddressBookApp.Validation;
@@ -15,7 +16,16 @@ public class AddressBook
 
     public void AddContact(Contact contact)
     {
+        if(ContactExists(contact))
+        {
+            throw new InvalidContactException("Contact Already Exists.");
+        }
         contacts.Add(contact);
+    }
+
+    public bool ContactExists(Contact contact)                                            // UC7
+    {
+        return contacts.Any(c => c.FirstName == contact.FirstName && c.LastName == contact.LastName);
     }
 
     public void PrintAll()
