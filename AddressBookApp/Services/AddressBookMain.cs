@@ -132,4 +132,36 @@ public class AddressBookMain
             Console.WriteLine(entry.ToString());
         }
     }
+
+
+    // UC12
+    public void SortEntriesByCity()
+    {
+        var sortedByCity = books.SelectMany(book => book.contacts).OrderBy(contact => contact.City);
+
+        foreach(var entry in sortedByCity)
+        {
+            Console.WriteLine(entry);
+        }
+    }
+
+    public void SortEntriesByState()
+    {
+        var sortedByState = books.SelectMany(book => book.contacts).OrderBy(contact => contact.State);
+
+        foreach(var entry in sortedByState)
+        {
+            Console.WriteLine(entry);
+        }
+    }
+
+    public void SortEntriesByZip()
+    {
+        var sortedByZip = books.SelectMany(book => book.contacts).OrderBy(contact => contact.Zip);
+
+        foreach(var entry in sortedByZip)
+        {
+            Console.WriteLine(entry);
+        }
+    }
 }
