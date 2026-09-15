@@ -68,4 +68,38 @@ public class AddressBookMain
             Console.WriteLine("Invalid Choice.");
         }
     }
+
+    public void DisplayContactsGroupedByCity()                                  // UC9
+    {
+        Dictionary<string, List<Contact>> result = books.SelectMany(c => c.contacts)
+                                                    .GroupBy(contact => contact.City)
+                                                    .ToDictionary(g => g.Key, g => g.ToList());
+
+        foreach(var entry in result)
+        {
+            Console.WriteLine(entry.Key);
+
+            foreach(var contact in entry.Value)
+            {
+                Console.WriteLine($"{contact.FirstName} {contact.LastName}");
+            }
+        }
+    }
+
+    public void DisplayContactsGroupedByState()
+    {
+        Dictionary<string, List<Contact>> result = books.SelectMany(c => c.contacts)
+                                                    .GroupBy(contact => contact.State)
+                                                    .ToDictionary(g => g.Key, g => g.ToList());
+
+        foreach(var entry in result)
+        {
+            Console.WriteLine(entry.Key);
+
+            foreach(var contact in entry.Value)
+            {
+                Console.WriteLine($"{contact.FirstName} {contact.LastName}");
+            }
+        }
+    }
 }
