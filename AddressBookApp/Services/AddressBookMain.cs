@@ -102,4 +102,24 @@ public class AddressBookMain
             }
         }
     }
+
+
+    public void CountByCityOrState()                                          // UC10
+    {
+        Console.WriteLine("------Count by City--------");
+        var countByCity = books.SelectMany(c => c.contacts).GroupBy(contact => contact.City);
+
+        foreach(var entry in countByCity)
+        {
+            Console.WriteLine($"{entry.Key}= {entry.Count()}");
+        }
+
+        Console.WriteLine("------Count by State--------");
+        var countByState = books.SelectMany(c => c.contacts).GroupBy(contact => contact.State);
+
+        foreach(var entry in countByState)
+        {
+            Console.WriteLine($"{entry.Key}= {entry.Count()}");
+        }
+    }
 }
