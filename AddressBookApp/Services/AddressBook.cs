@@ -6,7 +6,7 @@ namespace AddressBookApp.Services;
 
 public class AddressBook
 {
-    private List<Contact> contacts;
+    public List<Contact> contacts;
 
     public AddressBook()
     {
@@ -136,6 +136,28 @@ public class AddressBook
         else Console.WriteLine("Invalid Entry");
 
         Console.WriteLine("Fields updated");
+    }
+
+    public void RemoveByName()
+    {
+        Console.Write("Enter first name: ");
+        string? firstName = Console.ReadLine();
+
+        Console.Write("\nEnter last name: ");
+        string? lastName = Console.ReadLine();
+
+        Console.WriteLine();
+
+        Contact? contact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+
+        if(contact == null)
+        {
+            Console.WriteLine("Data not found");
+            return;
+        }
+
+        contacts.Remove(contact);
+        Console.WriteLine("Contact deleted");
     }
 
 }
